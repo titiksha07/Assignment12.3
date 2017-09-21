@@ -1,0 +1,47 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<section id="login">
+    <div class="container">
+                <div class="form-wrap">
+                    <form novalidate autocomplete="off" #myForm="ngForm" (ngSubmit)="addEmployee(myForm.value)">
+                        <h1>Add an Employee</h1>
+                        
+                        <div class="form-group">
+                        <input type="text" class="form-control" #refF='ngModel' [(ngModel)]="employeeModel.firstName" placeholder="FirstName" name="firstName">
+                        <br>
+                        </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="employeeModel.lastName" placeholder="LastName" name="lastName" #refL='ngModel'> 
+                        </div>
+                        <br>
+                        <span>{{employeeModel.lastName|capital}}</span>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="EmployeeId" [(ngModel)]=employeeModel.employeeId name="employeeId" #refId='ngModel'>
+                        </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" placeholder="EmployeeId" [(ngModel)]=employeeModel.dob name="dob" #refdob='ngModel'>
+                        <br>
+                        <span>{{employeeModel.dob|date:"M/d/yyyy"}}</span>
+                        </div>
+
+                        <br>
+                      
+                        <div class="form-group">
+                            <select class="txt-box" name="deptType"  class="form-control">
+                            <option [value]="employeeModel.department" [disabled]="true">Select Option </option>
+                            <option *ngFor="let d of deptType" [ngValue]="d.type">
+                                {{d.type|uppercase}}
+                            </option>
+                         </select>
+                        </div>
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Submit" [disabled]="myForm.invalid">
+                        <div>
+      <app-employee [employeesDetail]="employeesArray"></app-employee>
+               </div>
+                    </form>
+  
+                      
+                </div>
+        </div>
+            </section>
+
+
